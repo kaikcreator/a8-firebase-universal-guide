@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "thetestenvironment": {
+      "hosting": {
+        "universal-demo": [
+          "thetestenvironment"
+        ]
+      }
+    }
+  }
+}
