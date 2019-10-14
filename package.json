@@ -11,7 +11,11 @@
     "compile:server": "webpack --config webpack.server.config.js --progress --colors",
     "serve:ssr": "node dist/server",
     "build:ssr": "npm run build:client-and-server-bundles && npm run compile:server",
-    "build:client-and-server-bundles": "ng build --prod && ng run universal-demo:server:production --bundleDependencies all"
+    "build:client-and-server-bundles": "ng build --prod && ng run universal-demo:server:production --bundleDependencies all",
+    "build:firebase": "npm run build:ssr && npm run build:functions && npm run rm:public-index",
+    "serve:firebase": "firebase serve",
+    "rm:public-index": "rm ./dist/browser/index.html",
+    "build:functions": "npm run --prefix functions build"
   },
   "private": true,
   "dependencies": {
