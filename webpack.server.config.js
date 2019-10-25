@@ -7,20 +7,18 @@ module.exports = {
   mode: 'none',
   entry: {
     // This is our Express server for Dynamic universal
-    server: './server.ts'
-  },
-  externals: {
-    './dist/server/main': 'require("./server/main")'
+    server: './server.ts',
   },
   target: 'node',
   resolve: { extensions: ['.ts', '.js'] },
   optimization: {
-    minimize: false
+    minimize: false,
   },
   output: {
     // Puts the output at the root of the dist folder
     path: path.join(__dirname, 'dist'),
-    filename: '[name].js'
+    filename: '[name].js',
+    libraryTarget: 'commonjs2',
   },
   module: {
     noParse: /polyfills-.*\.js/,
@@ -32,7 +30,7 @@ module.exports = {
         test: /(\\|\/)@angular(\\|\/)core(\\|\/).+\.js$/,
         parser: { system: true },
       },
-    ]
+    ],
   },
   plugins: [
     new webpack.ContextReplacementPlugin(
@@ -46,6 +44,6 @@ module.exports = {
       /(.+)?express(\\|\/)(.+)?/,
       path.join(__dirname, 'src'),
       {}
-    )
-  ]
+    ),
+  ],
 };
